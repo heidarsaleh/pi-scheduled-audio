@@ -8,6 +8,14 @@ const s = require('./schedule')
 
 console.log('Time is now: ' + moment(Date.now()).format('LLLL'))
 
+schedule.scheduleJob('0 7 * * FRI', () => {
+	player.play('audio/f.mp3', (err) => err ? console.log('Error!', err) : console.log('Succeeded!'))
+})
+
+schedule.scheduleJob('0 18 * * MON', () => {
+	player.play('audio/f.mp3', (err) => err ? console.log('Error!', err) : console.log('Succeeded!'))
+})
+
 s.forEach(day => {
 	day.times.forEach(t => {
 		const time = t.join(':')
@@ -22,5 +30,5 @@ s.forEach(day => {
 })
 
 setInterval(() => {
-	    console.log('I\'m alive!');
-}, 1000 * 60 * 60);
+	console.log('I\'m alive!')
+}, 1000 * 60 * 60)
