@@ -19,6 +19,11 @@ schedule.scheduleJob('0 7 * * FRI', () => {
 	player.play('audio/f.mp3', (err) => err ? console.log('Error!', err) : console.log('Succeeded!'))
 })
 
+schedule.scheduleJob('0 20 * * 1-5', () => {
+	player.play('audio/goodnight.mp3', (err) => err ? console.log('Error!', err) : console.log('Succeeded!'))
+})
+
+
 s.forEach(day => {
 	day.times.forEach(t => {
 		const time = t.slice(0, 3).join(':')
