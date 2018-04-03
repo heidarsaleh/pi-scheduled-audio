@@ -1,12 +1,15 @@
 {
   "name": "pi-scheduled-audio",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dest/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js --watch"
+    "start": "concurrently \"npm run build\" \"npm run run\"",
+    "build": "babel src  --watch --out-dir dest",
+    "run": "nodemon dest/index.js --watch"
   },
   "dependencies": {
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "lame": "^1.2.4",
     "moment-timezone": "^0.5.14",
@@ -15,5 +18,10 @@
     "play-sound": "^1.1.2",
     "pushover-notifications": "^1.0.0",
     "speaker": "^0.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "concurrently": "^3.5.1"
   }
 }

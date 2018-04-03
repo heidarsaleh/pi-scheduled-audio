@@ -1,4 +1,5 @@
 audio/*
-schedule.js
-config.js
+dest/*
+src/schedule.js
+src/config.js
 node_modules
