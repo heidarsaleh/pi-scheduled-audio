@@ -4,8 +4,9 @@
   "main": "dest/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"npm run build\" \"npm run run\"",
-    "build": "babel src  --watch --out-dir dest",
+    "start": "concurrently \"npm run watch\" \"npm run run\"",
+    "watch": "babel src  --watch --out-dir dest",
+    "build": "babel src --out-dir dest",
     "run": "nodemon dest/index.js --watch"
   },
   "dependencies": {
