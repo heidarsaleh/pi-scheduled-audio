@@ -12,6 +12,8 @@ dotenv.config()
 
 console.log('Time is now: ' + moment(Date.now()).format('LLLL'))
 
+const createDailyMessage = times => times.map(t => `${t[0]}:${t[1]} ${t[3]}`).join('\n')
+
 schedule.scheduleJob('0 7 * * FRI', () => {
 	play('audio/f.mp3')
 	.catch(err => console.error('failed to run Friday\'s task', err))
@@ -33,8 +35,8 @@ s.forEach(day => {
 				Promise.all([
 					play(day.audio),
 					push({
-						message: t[3] || 'PI Alarm!',
-						title: t[4] || 'PI Wanna Say something!',
+						message: `${day.message}\n${createDailyMessage(day.times.filter(mt => mt[0]+mt[1] > t[0]+t[1]))}`,
+						title: `${t[3]} ${t[4]}`,
 						url: host ? `${host}stop-audio` : undefined,
   						url_title: host ? "Stop Audio" : undefined
 					})
