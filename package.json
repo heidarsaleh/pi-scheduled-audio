@@ -10,6 +10,7 @@
     "run": "nodemon dest/index.js --watch"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "lame": "^1.2.4",
